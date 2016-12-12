@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>练习</title>
+<style>
+div,p{
+  margin: 0;
+  padding:0;
+}
+.box{
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  background: #efefef;
+  margin-bottom: 10px;
+  padding-top: 20px;
+}
+p{
+  font-size: 12px;
+  color: gray;
+}
+.box::before{
+  content: attr(title);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 12px;
+  color: gray;
+}
+h1{
+  font-size: 14px;
+}
+.item{
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  background: #ddd;
+  margin: 10px;
+}
+.it{
+  background: #d6f6e1;
+  margin: 2px;
+}
+.it.blank{
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+.box1{
+  display: flex;
+  /* 主轴居中 flex-start flex-end center space-around space-between */
+  /* space-between: 两两之间的空白空间相等 */
+  /* 只有一个子元素，等效 flex-start */
+
+  /* space-around: 两两之间的空白空间相等，同时第一个元素前的空间以及最后一个元素后的空间为其他空白空间的一半 */
+  /* 只有一个子元素，等效 center */
+  justify-content: center;
+
+  /* 侧轴居中 flex-start flex-end center baseline strecth */
+  align-items: center;
+}
+.box1:before{
+  content: ':before';
+}
+.box2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box3{
+  display: flex;
+  justify-content: flex-start;;
+  align-items: flex-start;;
+}
+.box3 .it{
+  width: 34px;
+  height: 34px;
+  font-size: 12px;
+  margin: 2px;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+</style>
+</head>
+<body>
+<p>有一些不完美的地方，比如：</p>
+<ul>
+  <li>flex 内所有直接子元素都受弹性布局影响，无法指定部分不按照弹性布局实现
+    <p>PS: 临时解决可使用 absolute 方案，使其脱离普通文档流</p>
+  </li>
+  <li>制作多列列表时，最后一行的排版有些失控了
+    <p>PS: 比如使用 space-around，等间距，可以添加隐藏的空标签实现(宽高超级小)</p>
+  </li>
+</ul>
+
+<div class="box" title="居中对齐">
+  <div class="item box1">
+    <div class="it">内容1</div>
+    <div class="it">内容2</div>
+  </div>
+</div>
+
+<div class="box" title="两端对齐">
+  <div class="item box2">
+    <div class="it">内容1</div>
+    <div class="it">内容2</div>
+  </div>
+  <div class="item box2">
+    <div class="it">内容1 <span class="tt">内容2</span></div>
+    <div class="it column">
+      <p>内容3</p>
+      <p>内容4</p>
+    </div>
+  </div>
+  <div class="item box2">
+    <div class="it" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">内容过长怎么办，可以限制不换行并超出隐藏，宽度可以由其他部分设定，剩余宽度作为此项宽度</div>
+    <div class="it column" style="width: 200px; text-align: right;">
+      <p>内容3</p>
+      <p>num</p>
+    </div>
+  </div>
+</div>
+
+<div class="box" title="列表内容">
+  <div class="item box3">
+    <div class="it">内容1</div>
+    <div class="it">内容2</div>
+    <div class="it">内容3</div>
+    <div class="it">内容4</div>
+    <div class="it">内容5</div>
+    <div class="it">内容6</div>
+    <div class="it">内容7</div>
+    <div class="it">内容8</div>
+  </div>
+  <div class="item box3" style="flex-wrap: wrap; ">
+    <div class="it">内容1</div>
+    <div class="it">内容2</div>
+    <div class="it">内容3</div>
+    <div class="it">内容4</div>
+    <div class="it">内容5</div>
+    <div class="it">内容6</div>
+    <div class="it">内容7</div>
+    <div class="it">内容8</div>
+  </div>
+  <div class="item box3" style="flex-wrap: wrap; justify-content: space-between; ">
+    <div class="it">内容1</div>
+    <div class="it">内容2</div>
+    <div class="it">内容3</div>
+    <div class="it">内容4</div>
+    <div class="it">内容5</div>
+    <div class="it">内容6</div>
+    <div class="it">内容7</div>
+    <div class="it">内容8</div>
+  </div>
+  <div class="item box3" style="flex-wrap: wrap; justify-content: space-around; ">
+    <div class="it">内容1</div>
+    <div class="it">内容2</div>
+    <div class="it">内容3</div>
+    <div class="it">内容4</div>
+    <div class="it">内容5</div>
+    <div class="it">内容6</div>
+    <div class="it">内容7</div>
+    <div class="it">内容8</div>
+  </div>
+  <div class="item box3" style="flex-wrap: wrap; justify-content: space-around; ">
+    <div class="it">内容1</div>
+    <div class="it">内容2</div>
+    <div class="it">内容3</div>
+    <div class="it">内容4</div>
+    <div class="it">内容5</div>
+    <div class="it">内容6</div>
+    <div class="it">内容7</div>
+    <div class="it">内容8</div>
+    <div class="it blank"></div>
+    <div class="it blank"></div>
+    <div class="it blank"></div>
+    <div class="it blank"></div>
+    <div class="it blank"></div>
+    <div class="it blank"></div>
+  </div>
+</div>
+</body>
+</html>
