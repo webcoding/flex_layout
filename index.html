@@ -43,12 +43,7 @@ h1{
   background: #d6f6e1;
   margin: 2px;
 }
-.it.blank{
-  width: 1px;
-  height: 1px;
-  margin: 0;
-  opacity: 0;
-}
+
 .box1{
   display: flex;
   /* 主轴居中 flex-start flex-end center space-around space-between */
@@ -81,6 +76,10 @@ h1{
   font-size: 12px;
   margin: 2px;
 }
+.box3 .it.blank{
+  height: 1px;
+  opacity: 0;
+}
 .column{
   display: flex;
   flex-direction: column;
@@ -95,7 +94,7 @@ h1{
     <p>PS: 临时解决可使用 absolute 方案，使其脱离普通文档流</p>
   </li>
   <li>制作多列列表时，最后一行的排版有些失控了
-    <p>PS: 比如使用 space-around，等间距，可以添加隐藏的空标签实现(宽高超级小)</p>
+    <p>PS: 比如使用 space-around，等间距，可以添加隐藏的空标签实现(高度超级小1px，透明度为0，其他不变)</p>
   </li>
 </ul>
 
