@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>练习</title>
+  <!-- <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'> -->
 <style>
+body{
+  margin: 0;
+}
 div,p{
   margin: 0;
   padding:0;
@@ -85,9 +89,136 @@ h1{
   flex-direction: column;
   justify-content: space-between;
 }
+
+/* 交互示例 */
+html{
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+.example{
+  padding: 8px;
+}
+.example1{
+  background-color: #FFD54F;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+.flex-container {
+  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 80vw;
+          flex: 0 0 80vw;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border: 0.25rem solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  -webkit-transition: border 0.25s ease;
+  transition: border 0.25s ease;
+}
+.flex-container:after {
+  content: "flex-container";
+  position: absolute;
+  top: -4rem;
+  left: -2rem;
+  opacity: 0.25;
+  font-size: 2rem;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+.flex-container:hover {
+  border: 0.25rem solid rgba(255, 255, 255, 0.75);
+}
+.flex-container:hover:after {
+  opacity: 0.5;
+}
+
+.flex-item {
+  background-color: white;
+  height: 10rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+  font-size: 1.25rem;
+  color: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.flex-item:hover {
+  color: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.flex-item.add {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 0;
+  opacity: 0;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.add-flex-item {
+  background-color: #FFD54F;
+  border: 2px solid white;
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  z-index: 10;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  cursor: pointer;
+}
+.add-flex-item:focus {
+  outline: none;
+}
+.add-flex-item:hover {
+  background-color: white;
+  color: #FFD54F;
+  -webkit-transform: scale(1.2, 1.2);
+          transform: scale(1.2, 1.2);
+}
+
+.flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flex-item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
 </style>
 </head>
 <body>
+<div class="example example1">
+  <div class="flex-container">
+    <div class="flex-item">flex-item</div>
+    <div class="flex-item">flex-item</div>
+    <div class="flex-item">flex-item</div>
+    <div class="flex-item">flex-item</div>
+  </div>
+  <button class="add-flex-item" onclick="addItem()">+</button>
+</div>
+
+
+<div class="example">
 <p>有一些不完美的地方，比如：</p>
 <ul>
   <li>flex 内所有直接子元素都受弹性布局影响，无法指定部分不按照弹性布局实现
@@ -184,5 +315,20 @@ h1{
     <div class="it blank"></div>
   </div>
 </div>
+
+</div>
+
+<script>
+'use strict';
+var flexContainer = document.querySelector('.flex-container');
+var flexItemTemplate = '<div class="flex-item add">flex-item</div>';
+function addItem() {
+    flexContainer.innerHTML += flexItemTemplate;
+    var flexItemAdd = document.querySelector('.add');
+    setTimeout(function () {
+        flexItemAdd.classList.remove('add');
+    }, 10);
+}
+</script>
 </body>
 </html>
