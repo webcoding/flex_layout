@@ -3,15 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>练习</title>
-  <!-- <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'> -->
+  <link rel='stylesheet prefetch' href='reset.css'>
 <style>
-body{
-  margin: 0;
-}
-div,p{
-  margin: 0;
-  padding:0;
-}
+/* 交互示例 */
 .box{
   position: relative;
   display: flex;
@@ -84,21 +78,35 @@ h1{
   height: 1px;
   opacity: 0;
 }
+
+.box4 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box4 .it:nth-child(1){ flex-grow: 1; }
+.box4 .it:nth-child(2){ flex-shrink: 0; }
+.box4:nth-child(2) {
+  flex-direction: row-reverse;
+}
+
+.box5 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
 .column{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/* 交互示例 */
-html{
-  box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
+
+
 .example{
   padding: 8px;
 }
@@ -208,109 +216,134 @@ html{
 </head>
 <body>
 <div class="example">
-<p>有一些不完美的地方，比如：</p>
-<ul>
-  <li>flex 内所有直接子元素都受弹性布局影响，无法指定部分不按照弹性布局实现
-    <p>PS: 临时解决可使用 absolute 方案，使其脱离普通文档流</p>
-  </li>
-  <li>使用 space-around 制作等间距多列列表时，最后一行的排版有些失控了
-    <p>此实现可动态支持响应式，并且不会导致列表项变得很大，区别于百分比布局</p>
-    <p>PS: 可以添加多个隐藏的空标签实现(高度超级小1px，透明度为0，其他不变)</p>
-  </li>
-  <li>关于收缩比率以及扩展比率
-    <p>PS: 默认会按比率伸缩空间，容器大了扩展，小了则收缩，如何实现其中某项元素不伸缩？</p>
-    <p>flex-grow的默认值为0，如果没有显示定义该属性，是不会拥有分配剩余空间权利的，即不参与扩展。</p>
-    <p>flex-shrink的默认值为1，设置flex-shrink: 0;则不参与收缩。</p>
-  </li>
-</ul>
+  <p>有一些不完美的地方，比如：</p>
+  <ul>
+    <li>flex 内所有直接子元素都受弹性布局影响，无法指定部分不按照弹性布局实现
+      <p>PS: 临时解决可使用 absolute 方案，使其脱离普通文档流</p>
+    </li>
+    <li>使用 space-around 制作等间距多列列表时，最后一行的排版有些失控了
+      <p>此实现可动态支持响应式，并且不会导致列表项变得很大，区别于百分比布局</p>
+      <p>PS: 可以添加多个隐藏的空标签实现(高度超级小1px，透明度为0，其他不变)</p>
+    </li>
+    <li>关于收缩比率以及扩展比率 <a href="flex.html">flex.html</a>
+      <p>PS: 默认会按比率伸缩空间，容器大了扩展，小了则收缩，如何实现其中某项元素不伸缩？</p>
+      <p>flex-grow的默认值为0，如果没有显示定义该属性，是不会拥有分配剩余空间权利的，即不参与扩展。</p>
+      <p>flex-shrink的默认值为1，设置flex-shrink: 0;则不参与收缩。</p>
+    </li>
+    <li>怎么实现自适应的弹性布局
+      <p>PS: 实现填写表单界面时，通常是 label+input 布局，一般会要求 input 尽可能大，单够弹性 ？</p>
+      <p>参见：<a href="field.html">field.html</a></p>
+    </li>
+  </ul>
 
-<div class="box" title="居中对齐">
-  <div class="item box1">
-    <div class="it">内容1</div>
-    <div class="it">内容2</div>
-  </div>
-</div>
-
-<div class="box" title="两端对齐">
-  <div class="item box2">
-    <div class="it">内容1</div>
-    <div class="it">内容2</div>
-  </div>
-  <div class="item box2">
-    <div class="it">内容1 <span class="tt">内容2</span></div>
-    <div class="it column">
-      <p>内容3</p>
-      <p>内容4</p>
+  <div class="box" title="居中对齐">
+    <div class="item box1">
+      <div class="it">内容1</div>
+      <div class="it">内容2</div>
     </div>
   </div>
-  <div class="item box2">
-    <div class="it" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">内容过长怎么办，可以限制不换行并超出隐藏，宽度可以由其他部分设定，剩余宽度作为此项宽度</div>
-    <div class="it column" style="width: 200px; text-align: right;">
-      <p>内容3</p>
-      <p>num</p>
+
+  <div class="box" title="两端对齐">
+    <div class="item box2">
+      <div class="it">内容1</div>
+      <div class="it">内容2</div>
+    </div>
+    <div class="item box2">
+      <div class="it">内容1 <span class="tt">内容2</span></div>
+      <div class="it column">
+        <p>内容3</p>
+        <p>内容4</p>
+      </div>
+    </div>
+    <div class="item box2">
+      <div class="it" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">内容过长怎么办，可以限制不换行并超出隐藏，宽度可以由其他部分设定，剩余宽度作为此项宽度</div>
+      <div class="it column" style="width: 200px; text-align: right;">
+        <p>内容3</p>
+        <p>num</p>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="box" title="列表内容">
-  <div class="item box3">
-    <div class="it">内容1</div>
-    <div class="it">内容2</div>
-    <div class="it">内容3</div>
-    <div class="it">内容4</div>
-    <div class="it">内容5</div>
-    <div class="it">内容6</div>
-    <div class="it">内容7</div>
-    <div class="it">内容8</div>
+  <div class="box" title="列表内容">
+    <div class="item box3">
+      <div class="it">内容1</div>
+      <div class="it">内容2</div>
+      <div class="it">内容3</div>
+      <div class="it">内容4</div>
+      <div class="it">内容5</div>
+      <div class="it">内容6</div>
+      <div class="it">内容7</div>
+      <div class="it">内容8</div>
+    </div>
+    <div class="item box3" style="flex-wrap: wrap; ">
+      <div class="it">内容1</div>
+      <div class="it">内容2</div>
+      <div class="it">内容3</div>
+      <div class="it">内容4</div>
+      <div class="it">内容5</div>
+      <div class="it">内容6</div>
+      <div class="it">内容7</div>
+      <div class="it">内容8</div>
+    </div>
+    <div class="item box3" style="flex-wrap: wrap; justify-content: space-between; ">
+      <div class="it">内容1</div>
+      <div class="it">内容2</div>
+      <div class="it">内容3</div>
+      <div class="it">内容4</div>
+      <div class="it">内容5</div>
+      <div class="it">内容6</div>
+      <div class="it">内容7</div>
+      <div class="it">内容8</div>
+    </div>
+    <div class="item box3" style="flex-wrap: wrap; justify-content: space-around; ">
+      <div class="it">内容1</div>
+      <div class="it">内容2</div>
+      <div class="it">内容3</div>
+      <div class="it">内容4</div>
+      <div class="it">内容5</div>
+      <div class="it">内容6</div>
+      <div class="it">内容7</div>
+      <div class="it">内容8</div>
+    </div>
+    <div class="item box3" style="flex-wrap: wrap; justify-content: space-around; ">
+      <div class="it">内容1</div>
+      <div class="it">内容2</div>
+      <div class="it">内容3</div>
+      <div class="it">内容4</div>
+      <div class="it">内容5</div>
+      <div class="it">内容6</div>
+      <div class="it">内容7</div>
+      <div class="it">内容8</div>
+      <div class="it blank"></div>
+      <div class="it blank"></div>
+      <div class="it blank"></div>
+      <div class="it blank"></div>
+      <div class="it blank"></div>
+      <div class="it blank"></div>
+    </div>
   </div>
-  <div class="item box3" style="flex-wrap: wrap; ">
-    <div class="it">内容1</div>
-    <div class="it">内容2</div>
-    <div class="it">内容3</div>
-    <div class="it">内容4</div>
-    <div class="it">内容5</div>
-    <div class="it">内容6</div>
-    <div class="it">内容7</div>
-    <div class="it">内容8</div>
-  </div>
-  <div class="item box3" style="flex-wrap: wrap; justify-content: space-between; ">
-    <div class="it">内容1</div>
-    <div class="it">内容2</div>
-    <div class="it">内容3</div>
-    <div class="it">内容4</div>
-    <div class="it">内容5</div>
-    <div class="it">内容6</div>
-    <div class="it">内容7</div>
-    <div class="it">内容8</div>
-  </div>
-  <div class="item box3" style="flex-wrap: wrap; justify-content: space-around; ">
-    <div class="it">内容1</div>
-    <div class="it">内容2</div>
-    <div class="it">内容3</div>
-    <div class="it">内容4</div>
-    <div class="it">内容5</div>
-    <div class="it">内容6</div>
-    <div class="it">内容7</div>
-    <div class="it">内容8</div>
-  </div>
-  <div class="item box3" style="flex-wrap: wrap; justify-content: space-around; ">
-    <div class="it">内容1</div>
-    <div class="it">内容2</div>
-    <div class="it">内容3</div>
-    <div class="it">内容4</div>
-    <div class="it">内容5</div>
-    <div class="it">内容6</div>
-    <div class="it">内容7</div>
-    <div class="it">内容8</div>
-    <div class="it blank"></div>
-    <div class="it blank"></div>
-    <div class="it blank"></div>
-    <div class="it blank"></div>
-    <div class="it blank"></div>
-    <div class="it blank"></div>
-  </div>
-</div>
 
+  <div class="box" title="收缩比率控制">
+    <div class="item box4">
+      <div class="it">内容1 内容自动沾满剩余空间</div>
+      <div class="it">自适应定宽不收缩</div>
+    </div>
+    <div class="item box4" style="">
+      <div class="it">内容1 内容自动沾满剩余空间</div>
+      <div class="it">自适应定宽不收缩</div>
+    </div>
+  </div>
+
+  <div class="box" title="弹性自适应">
+    <div class="item box5">
+      <div class="it">内容1 测试自动扩展</div>
+      <div class="it">内容2 内容不收缩</div>
+    </div>
+    <div class="item box5">
+      <div class="it">内容1 测试自动扩展</div>
+      <div class="it">内容2 内容不收缩</div>
+    </div>
+  </div>
 </div>
 
 
