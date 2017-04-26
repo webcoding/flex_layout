@@ -21,6 +21,27 @@
   .box3 li:nth-child(1){flex:1 1 400px;}
   .box3 li:nth-child(2){flex:1 2 400px;}
   .box3 li:nth-child(3){flex:1 2 400px;}
+
+
+.flex{
+  display: flex;
+}
+.flex__item{
+  flex: 1;
+}
+.placeholder {
+  margin: 5px;
+  padding: 0 10px;
+  background-color: #ebebeb;
+  height: 2.3em;
+  line-height: 2.3em;
+  text-align: center;
+  color: #cfcfcf
+}
+.placeholder:before{
+  content: 'Flex';
+}
+
   </style>
 </head>
 <body>
@@ -44,7 +65,35 @@
   <li>flex:1 2 400px;</li>
 </ul>
 
-<h1>flex 属性：</h1>
-
+<h1>flex 弹性布局：</h1>
+<div class="example">
+  <div class="flex">
+    <div class="flex__item"><div class="placeholder"></div></div>
+  </div>
+  <div class="flex">
+    <div class="flex__item"><div class="placeholder"></div></div>
+    <div class="flex__item"><div class="placeholder"></div></div>
+  </div>
+  <div class="flex">
+    <div class="flex__item"><div class="placeholder"></div></div>
+    <div class="flex__item"><div class="placeholder"></div></div>
+    <div class="flex__item"><div class="placeholder"></div></div>
+  </div>
+  <div class="flex">
+    <div class="flex__item"><div class="placeholder"></div></div>
+    <div class="flex__item"><div class="placeholder"></div></div>
+    <div class="flex__item"><div class="placeholder"></div></div>
+    <div class="flex__item"><div class="placeholder"></div></div>
+  </div>
+  <div class="flex">
+    <div>
+      <div class="placeholder"></div>
+    </div>
+    <div class="flex__item"><div class="placeholder"></div></div>
+    <div>
+      <div class="placeholder"></div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
