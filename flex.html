@@ -21,10 +21,29 @@ width:400px;height:100px;margin:10px 0 0;padding:0;border-radius:5px;list-style:
 .box3 li:nth-child(1){flex:1 1 400px;}
 .box3 li:nth-child(2){flex:1 2 400px;}
 .box3 li:nth-child(3){flex:1 2 400px;}
-.flex__1-1-2{width: auto;}
-.flex__1-1-2 li:nth-child(1){flex:0 0 25%;}
-.flex__1-1-2 li:nth-child(2){flex:0 0 25%;}
-.flex__1-1-2 li:nth-child(3){flex:1 1 75%;}
+
+.flex-grid{
+  display: flex;
+  list-style: none;
+}
+.flex-grid-cell {
+  flex: 1;
+}
+.flex-grid-cell.u-full {
+  flex: 0 0 100%;
+}
+.flex-grid-cell.u-1of2 {
+  flex: 0 0 50%;
+}
+.flex-grid-cell.u-1of3 {
+  flex: 0 0 33.3333%;
+}
+.flex-grid-cell.u-1of4 {
+  flex: 0 0 25%;
+}
+.flex-grid-cell.u-1of5 {
+  flex: 0 0 20%;
+}
 .hidden{ display: none}
 
 .flex{
@@ -70,15 +89,15 @@ width:400px;height:100px;margin:10px 0 0;padding:0;border-radius:5px;list-style:
 </ul>
 
 <h4>1:1:2 弹性实现</h4>
-<ul class="box box4">
-  <li>25%</li>
-  <li>25%</li>
-  <li>50%</li>
+<ul class="box flex-grid">
+  <li class="flex-grid-cell u-1of4">25%</li>
+  <li class="flex-grid-cell u-1of4">25%</li>
+  <li class="flex-grid-cell">50%</li>
 </ul>
-<ul class="box flex__1-1-2">
-  <li class="hidden">0</li>
-  <li>25%</li>
-  <li>75%</li>
+<ul class="box flex-grid">
+  <li class="flex-grid-cell u-1of4 hidden">0</li>
+  <li class="flex-grid-cell u-1of4">25%</li>
+  <li class="flex-grid-cell">75%</li>
 </ul>
 
 <h1>flex 弹性布局：</h1>
